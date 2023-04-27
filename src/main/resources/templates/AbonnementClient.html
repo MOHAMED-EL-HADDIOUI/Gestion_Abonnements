@@ -1,0 +1,60 @@
+ <!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="template1.html"
+>
+<head>
+    <meta charset="UTF-8">
+    <title>GESTION DES ABONNEMENTS</title>
+    <link rel="icon" type="image/png" sizes="100x70" href="https://cdn-icons-png.flaticon.com/512/1260/1260241.png">
+    <link rel="stylesheet" href="/webjars/bootstrap/5.2.3/css/bootstrap.min.css">
+</head>
+<body>
+<div layout:fragment="content1">
+
+    <div class ="alert alert-info m-3">
+
+        <h2>La liste des Abonnemts de ce clients</h2><h2 th:text="${client.nom}" ></h2>
+
+        <table class="table">
+            <thead>
+            <tr>
+                <th>ID</th>
+                <th>DateAbonnement</th>
+                <th>MontantMensuel</th>
+                <th>TypeAbonnement</th>
+                <th>Solde</th>
+
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="p:${abonnement}">
+                <td  th:text="${p.getId()}"></td>
+                <td  th:text="${p.getDateAbonnement()}"></td>
+                <td  th:text="${p.getMontantMensuel()}"></td>
+                <td  th:text="${p.getTypeAbonnement()}"></td>
+                <td  th:text="${p.getSolde()}"></td>
+                <td >
+                    <a onclick="return confirm('Etes vous sûre?')" class="btn btn-danger"
+                       th:href="@{/admin/deleteAbonnement(id=${p.id})}">
+                        <i class="bi bi-trash"></i>
+                    </a>
+                </td>
+                <td >
+                    <a  class="btn btn-info"
+                        th:href="@{/user/editAbonnement(id=${p.id})}">
+                        <i class="bi bi-pencil"></i>
+                    </a>
+                </td>
+
+
+            </tr>
+            </tbody>
+        </table>
+
+    </div>
+
+
+</div>
+</body>
+</html>

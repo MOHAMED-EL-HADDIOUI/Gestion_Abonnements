@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="template1.html"
+>
+<head>
+  <meta charset="UTF-8">
+  <title>Add Client</title>
+  <link rel="icon" type="image/png" sizes="100x70" href="https://cdn-icons-png.flaticon.com/512/1260/1260241.png">
+
+</head>
+<body>
+<div layout:fragment="content1">
+  <div class="col-md-6 offset-3  ">
+    <form method="post"   th:action="@{save}" >
+      <div class="mb-3 mt-3">
+        <label for="nom" class="form-label">Nom:</label>
+        <input type="text" class="form-control" id="nom" th:value="${client.nom}" placeholder="Nom" name="nom">
+        <span class="text-danger" th:errors="${client.nom}" th:value="${client.nom}"></span>
+      </div>
+      <div class="mb-3 mt-3">
+        <label for="email" class="form-label">Email:</label>
+        <input type="text" class="form-control" id="email" th:value="${client.email}" placeholder="Email" name="email">
+
+      </div>
+      <div class="mb-3 mt-3">
+        <label for="username" class="form-label">UserName:</label>
+        <input type="text" class="form-control" id="username" th:value="${client.username}" placeholder="UserName" name="username">
+
+      </div>
+
+
+      <button type="submit" class="btn btn-primary">Save</button>
+    </form>
+  </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="template1.html"
+>
+<head>
+    <meta charset="UTF-8">
+    <meta charset="UTF-8">
+    <link rel="icon" type="image/png" sizes="100x70" href="https://cdn-icons-png.flaticon.com/512/1260/1260241.png">
+    <title>Add Abonnement</title>
+</head>
+<body>
+<div layout:fragment="content1">
+    <div class="col-md-6 offset-3  ">
+        <form method="post"   th:action="@{saveAbonnement}" >
+            <div class="mb-3 mt-3">
+                <label for="dateAbonnement" class="form-label">Date de Abonnement:</label>
+                <input type="date" class="form-control" id="dateAbonnement"  name="dateAbonnement" th:value="${abonnement.dateAbonnement}">
+
+            </div>
+            <div class="mb-3 mt-3">
+                <label for="TypeAbonnement" class="form-label">Type de Abonnement:</label>
+                <input type="text" class="form-control" id="TypeAbonnement" placeholder="TypeAbonnement" name="TypeAbonnement" th:value="${abonnement.TypeAbonnement}">
+            </div>
+            <div class="mb-3 mt-3">
+                <label for="solde" class="form-label">Solde:</label>
+                <input type="text" class="form-control" id="solde" placeholder="solde" name="solde" th:value="${abonnement.solde}">
+            </div>
+            <div class="mb-3 mt-3">
+                <label for="montantMensuel" class="form-label">Montant Mensuel:</label>
+                <input type="text" class="form-control" id="montantMensuel" placeholder="montantMensuel" name="montantMensuel" th:value="${abonnement.montantMensuel}">
+            </div>
+            <div class="mb-3 mt-3" >
+                <label for="client" class="form-label">Client:</label>
+                <input type="text" class="form-control" id="client" placeholder="client" name="client" th:value="${client.nom}" disabled="disabled">
+            </div>
+
+            <button type="submit" class="btn btn-primary">Save</button>
+        </form>
+    </div>
+</div>
+</body>
+</html>

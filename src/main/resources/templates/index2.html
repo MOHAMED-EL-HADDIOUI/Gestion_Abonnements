@@ -1,0 +1,66 @@
+ <!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="template1.html"
+>
+<head>
+    <meta charset="UTF-8">
+    <title>GESTION DES ABONNEMENTS</title>
+    <link rel="icon" type="image/png" sizes="100x70" href="https://cdn-icons-png.flaticon.com/512/1260/1260241.png">
+    <link rel="stylesheet" href="/webjars/bootstrap/5.2.3/css/bootstrap.min.css">
+</head>
+<body>
+<div layout:fragment="content1">
+    <div class ="alert alert-info m-3">
+        <h2>Les informations Personnels</h2>
+        <h3><a class="dropdown-item" th:href="@{/user/formAbonnements}" >Créer une Abonnement</a></h3>
+        <table class="table">
+            <thead>
+            <tr>
+                <th>NOM</th>
+                <th>USERNAME</th>
+                <th>EMAIL</th>
+            </tr>
+            </thead>
+            <tbody>
+            <th th:text="${user.getClient().getNom()}"></th>
+            <th th:text="${user.getClient().getUsername()}"></th>
+            <th th:text="${user.getClient().getEmail()}"></th>
+            </tbody>
+        </table>
+    </div>
+    <div class ="alert alert-info m-3">
+        <h2>La liste de votre Abonnement Abonnemts </h2>
+        <table class="table">
+            <thead>
+            <tr>
+                <th>ID</th>
+                <th>DateAbonnement</th>
+                <th>MontantMensuel</th>
+                <th>TypeAbonnement</th>
+                <th>Solde</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="p:${user.getClient().getAbonnement()}">
+                <td  th:text="${p.getId()}"></td>
+                <td  th:text="${p.getDateAbonnement()}"></td>
+                <td  th:text="${p.getMontantMensuel()}"></td>
+                <td  th:text="${p.getTypeAbonnement()}"></td>
+                <td  th:text="${p.getSolde()}"></td>
+                <td  >
+                    <a  class="btn btn-info"
+                        th:href="@{/user/editAbonnement(id=${p.id})}">
+                        <i class="bi bi-pencil"></i>
+                    </a>
+                </td>
+
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+
+</div>
+</body>
+</html>
